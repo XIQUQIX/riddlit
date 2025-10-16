@@ -1,6 +1,9 @@
 import express from "express";
 
 const router = express.Router();
+// apply bcrypt for passwords
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 // Setup routes with database
 export function setupUserRoutes(db) {
@@ -22,9 +25,12 @@ export function setupUserRoutes(db) {
         return res.status(400).json({ error: "Username already taken" });
       }
 
+      // turn to hash
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
+      
       await db.collection("users").insertOne({
         username,
-        password,
+        hashedPassword,
         created_at: new Date(),
         puzzle_count: 0,
         solve_count: 0,
@@ -57,6 +63,9 @@ export function setupUserRoutes(db) {
         return res.status(401).json({ error: "Invalid username or password" });
       }
 
+      // check login
+      const isValidPassword = await bcrypt.compare(password, storedHash);
+      
       if (user.password !== password) {
         return res.status(401).json({ error: "Invalid username or password" });
       }
