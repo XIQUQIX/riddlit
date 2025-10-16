@@ -31,6 +31,7 @@ Email: pakkamsaravanan.v@northeastern.edu
 
 ### Project Documentation
 
+- **Public Server:** XXX
 - **Design Document:** [Design Documentation](Riddlit_Design-Document.pdf)
 - **Presentation:** [Slides](https://docs.google.com/presentation/d/1xPm9M039GLZMHk8mcZV7HL1qMxUPVnFYUQoDz7TnTl4/edit?usp=sharing)
 - **Video Demo:** [Web-app Walkthrough](https://drive.google.com/file/d/1G6D1KT1ejUvMnTHB7NIBtEe12HCBhH70/view?usp=sharing)
